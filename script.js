@@ -1,5 +1,122 @@
 // ============================================
-// 🎬 Animação Cinematográfica de Entrada
+// � Controle de Música com Fade In Suave
+// ============================================
+
+
+// Configuração de fade in
+const FADE_IN_DURATION = 3000; // 3 segundos
+const FADE_OUT_DURATION = 1000; // 1 segundo
+const TARGET_VOLUME = 0.3; // 30% de volume (suave)
+
+let isFadingIn = false;
+let isFadingOut = false;
+
+let backgroundMusic;
+let musicToggle;
+
+// Inicializar quando o DOM estiver pronto
+function initMusic() {
+  backgroundMusic = document.getElementById("background-music");
+  musicToggle = document.getElementById("music-toggle");
+
+  if (!backgroundMusic || !musicToggle) {
+    console.log("Elementos de música não encontrados");
+    return;
+  }
+
+  // Iniciar autoplay imediatamente
+  setTimeout(() => {
+    fadeInAudio();
+  }, 800);
+
+  // Adicionar event listeners
+  musicToggle.addEventListener("click", toggleMusic);
+  backgroundMusic.addEventListener("play", () => {
+    musicToggle.classList.add("playing");
+    musicToggle.setAttribute("aria-label", "Pausar música");
+  });
+  backgroundMusic.addEventListener("pause", () => {
+    musicToggle.classList.remove("playing");
+    musicToggle.setAttribute("aria-label", "Reproduzir música");
+  });
+}
+
+function toggleMusic() {
+  if (backgroundMusic.paused) {
+    fadeInAudio();
+  } else {
+    fadeOutAudio();
+  }
+}
+function fadeInAudio() {
+  if (isFadingIn || isFadingOut) return;
+
+  isFadingIn = true;
+  backgroundMusic.volume = 0;
+  backgroundMusic.play().catch(() => {
+    console.log("Autoplay bloqueado pelo navegador. Usuário pode clicar no botão para reproduzir.");
+  });
+
+  const startTime = Date.now();
+  const startVolume = 0;
+
+  function updateVolume() {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / FADE_IN_DURATION, 1);
+
+    // Easing suave (ease-in-out)
+    const easeProgress = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+    backgroundMusic.volume = startVolume + (TARGET_VOLUME - startVolume) * easeProgress;
+
+    if (progress < 1) {
+      requestAnimationFrame(updateVolume);
+    } else {
+      backgroundMusic.volume = TARGET_VOLUME;
+      isFadingIn = false;
+    }
+  }
+
+  requestAnimationFrame(updateVolume);
+}
+
+function fadeOutAudio() {
+  if (isFadingIn || isFadingOut) return;
+
+  isFadingOut = true;
+  const startTime = Date.now();
+  const startVolume = backgroundMusic.volume;
+
+  function updateVolume() {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / FADE_OUT_DURATION, 1);
+
+    // Easing suave
+    const easeProgress = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+    backgroundMusic.volume = startVolume * (1 - easeProgress);
+
+    if (progress < 1) {
+      requestAnimationFrame(updateVolume);
+    } else {
+      backgroundMusic.volume = 0;
+      backgroundMusic.pause();
+      isFadingOut = false;
+    }
+  }
+
+  requestAnimationFrame(updateVolume);
+}
+
+// Event listener do botão de música
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initMusic);
+} else {
+  initMusic();
+}
+
+// Sincronizar estado do botão com o áudio (já feito em initMusic)
+
+// ============================================
+// �🎬 Animação Cinematográfica de Entrada
 // ============================================
 // Dispara a animação de entrada elegante (zoom + textos em sequência)
 // Usa sessionStorage para garantir que rode apenas na primeira carga

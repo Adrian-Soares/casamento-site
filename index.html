@@ -17,6 +17,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Áudio de fundo com intro suave -->
+    <audio id="background-music" preload="auto" autoplay>
+      <!-- URL de exemplo de música do Pixabay - substitua pela sua própria -->
+      <source src="musica-f8d10c98.mp3" type="audio/mpeg" />
+      Seu navegador não suporta áudio.
+    </audio>
     <header class="hero" id="inicio">
       <nav class="nav" aria-label="Navegação principal">
         <a class="brand" href="#inicio">José & Maria</a>
@@ -24,6 +30,14 @@
           <a href="#presentes">Presentes</a>
           <a href="#pix">Pix</a>
           <a href="#galeria">Fotos</a>
+          <button id="music-toggle" class="music-toggle" aria-label="Reproduzir música" title="Ativar música de fundo">
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+            </svg>
+          </button>
         </div>
       </nav>
 
