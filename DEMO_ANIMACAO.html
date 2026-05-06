@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Animação de Entrada - Casamento</title>
+    <style>
+        :root {
+            --white: #fffdf9;
+            --gold: #b88a44;
+            --ink: #2b2723;
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Montserrat", Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--ink);
+        }
+
+        /* ============================================
+           🎬 ANIMAÇÃO CINEMATOGRÁFICA DE ENTRADA
+           ============================================ */
+
+        .hero {
+            min-height: 100svh;
+            position: relative;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            padding: 1.25rem;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Fundo com zoom-out */
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(35, 25, 18, 0.3), rgba(35, 25, 18, 0.3)),
+                url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=86");
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            transform: scale(1.1);
+            will-change: transform;
+            animation: heroZoomOut 2.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            z-index: 0;
+        }
+
+        /* Gradient overlay no final */
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 32%;
+            background: linear-gradient(transparent, var(--white));
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 760px);
+            text-align: center;
+            text-shadow: 0 2px 18px rgba(0, 0, 0, 0.24);
+        }
+
+        /* Estilo dos textos */
+        .eyebrow {
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #f7d996;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 15vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .wedding-date {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-family: var(--serif);
+            margin-bottom: 1.5rem;
+            color: #f7d996;
+        }
+
+        .hero-copy {
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(184, 138, 68, 0.3);
+        }
+
+        /* ============================================
+           Animações
+           ============================================ */
+
+        /* Zoom-out na imagem de fundo */
+        @keyframes heroZoomOut {
+            from {
+                transform: scale(1.1);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* Slide-up + Fade-in dos textos */
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Aplicar animações apenas quando body tem classe "loaded" */
+        .hero-content .eyebrow,
+        .hero-content h1,
+        .hero-content .wedding-date,
+        .hero-content .hero-copy,
+        .hero-content .btn {
+            opacity: 0;
+            transform: translateY(30px);
+            will-change: transform, opacity;
+        }
+
+        body.loaded .hero-content .eyebrow {
+            animation: slideUpFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
+        }
+
+        body.loaded .hero-content h1 {
+            animation: slideUpFadeIn 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s forwards;
+        }
+
+        body.loaded .hero-content .wedding-date {
+            animation: slideUpFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.6s forwards;
+        }
+
+        body.loaded .hero-content .hero-copy {
+            animation: slideUpFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2s forwards;
+        }
+
+        body.loaded .hero-content .btn {
+            animation: slideUpFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.4s forwards;
+        }
+
+        /* Respeitar preferência de movimento reduzido */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .hero::before {
+                transform: scale(1) !important;
+            }
+
+            .hero-content .eyebrow,
+            .hero-content h1,
+            .hero-content .wedding-date,
+            .hero-content .hero-copy,
+            .hero-content .btn {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 1rem;
+            }
+
+            h1 {
+                margin-bottom: 0.75rem;
+            }
+
+            .wedding-date {
+                margin-bottom: 1rem;
+            }
+
+            .hero-copy {
+                margin-bottom: 2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Info badge */
+        .demo-info {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(184, 138, 68, 0.95);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            z-index: 100;
+            font-weight: 600;
+        }
+
+        .demo-info p {
+            margin: 0 0 8px 0;
+        }
+
+        .demo-info button {
+            background: white;
+            color: var(--gold);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 640px) {
+            .demo-info {
+                top: 10px;
+                right: 10px;
+                padding: 12px 15px;
+                font-size: 0.75rem;
+            }
+
+            .demo-info button {
+                padding: 4px 10px;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">Vamos celebrar o amor</p>
+            <h1>José & Maria</h1>
+            <p class="wedding-date">24 de Maio de 2026</p>
+            <p class="hero-copy">
+                Estamos muito felizes em compartilhar esse momento com você
+            </p>
+            <a class="btn" href="#">Presentear com Pix</a>
+        </div>
+    </header>
+
+    <div class="demo-info">
+        <p>🎬 Animação de Entrada</p>
+        <p>Duração total: ~3.6s</p>
+        <button onclick="resetAnimation()">Repetir</button>
+    </div>
+
+    <script>
+        // ============================================
+        // 🎬 Animação Cinematográfica de Entrada
+        // ============================================
+        function triggerEntryAnimation() {
+            requestAnimationFrame(() => {
+                document.body.classList.add("loaded");
+            });
+        }
+
+        // Dispara a animação ao carregar a página
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", triggerEntryAnimation);
+        } else {
+            triggerEntryAnimation();
+        }
+
+        // Função para repetir a animação (para demonstração)
+        function resetAnimation() {
+            document.body.classList.remove("loaded");
+            // Aguarda um frame para o navegador registrar a remoção
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    triggerEntryAnimation();
+                });
+            });
+        }
+    </script>
+</body>
+</html>

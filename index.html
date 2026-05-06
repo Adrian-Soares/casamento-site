@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Site de casamento de José e Maria com lista de presentes via Pix."
+    />
+    <title>José & Maria | Nosso Casamento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero" id="inicio">
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="#inicio">José & Maria</a>
+        <div class="nav-links">
+          <a href="#presentes">Presentes</a>
+          <a href="#pix">Pix</a>
+          <a href="#galeria">Fotos</a>
+        </div>
+      </nav>
+
+      <div class="hero-content reveal">
+        <p class="eyebrow">Vamos celebrar o amor</p>
+        <h1>José & Maria</h1>
+        <p class="wedding-date">24 de Maio de 2026</p>
+        <p class="hero-copy">
+          Estamos muito felizes em compartilhar esse momento com você.
+        </p>
+        <a class="btn btn-primary" href="#presentes">Presentear com Pix</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section message-section">
+        <div class="container narrow reveal">
+          <p class="eyebrow">Mensagem dos noivos</p>
+          <h2>Sua presença já é o nosso maior presente</h2>
+          <p>
+            Ter você conosco nesse dia torna tudo ainda mais especial. Se desejar
+            nos presentear, preparamos uma forma simples e carinhosa via Pix para
+            nos ajudar a começar essa nova fase com ainda mais alegria.
+          </p>
+        </div>
+      </section>
+
+      <section class="section gifts-section" id="presentes">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Lista de presentes</p>
+            <h2>Escolha uma forma de carinho</h2>
+            <p>
+              Cada contribuição será recebida com muita gratidão e fará parte da
+              construção das nossas primeiras memórias como família.
+            </p>
+          </div>
+
+          <div class="gift-grid">
+            <article
+              class="gift-card reveal"
+              data-gift="Lua de Mel"
+              data-goal="1200"
+              data-received="0"
+            >
+              <img
+                class="gift-image"
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80"
+                alt="Praia paradisíaca representando a lua de mel"
+              />
+              <h3>Lua de Mel</h3>
+              <p>Ajude a tornar nossa lua de mel inesquecível.</p>
+              <div class="gift-progress" aria-label="Progresso da meta">
+                <div class="gift-values">
+                  <span>Meta: <strong data-goal-label>R$ 0</strong></span>
+                  <span>Faltam: <strong data-remaining-label>R$ 0</strong></span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" data-progress-fill></span>
+                </div>
+              </div>
+              <div class="card-contribution">
+                <label>Quanto deseja contribuir?</label>
+                <div class="money-input">
+                  <span>R$</span>
+                  <input type="number" min="1" step="1" inputmode="numeric" placeholder="150" data-card-amount />
+                </div>
+              </div>
+              <button class="btn btn-card" type="button" data-open-modal>
+                Gerar Pix
+              </button>
+            </article>
+
+            <article
+              class="gift-card reveal"
+              data-gift="Móveis para a casa"
+              data-goal="900"
+              data-received="0"
+            >
+              <img
+                class="gift-image"
+                src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=700&q=80"
+                alt="Sala elegante com móveis aconchegantes"
+              />
+              <h3>Móveis para a casa</h3>
+              <p>Um carinho para deixar nosso novo cantinho mais aconchegante.</p>
+              <div class="gift-progress" aria-label="Progresso da meta">
+                <div class="gift-values">
+                  <span>Meta: <strong data-goal-label>R$ 0</strong></span>
+                  <span>Faltam: <strong data-remaining-label>R$ 0</strong></span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" data-progress-fill></span>
+                </div>
+              </div>
+              <div class="card-contribution">
+                <label>Quanto deseja contribuir?</label>
+                <div class="money-input">
+                  <span>R$</span>
+                  <input type="number" min="1" step="1" inputmode="numeric" placeholder="100" data-card-amount />
+                </div>
+              </div>
+              <button class="btn btn-card" type="button" data-open-modal>
+                Gerar Pix
+              </button>
+            </article>
+
+            <article
+              class="gift-card reveal"
+              data-gift="Utensílios domésticos"
+              data-goal="700"
+              data-received="0"
+            >
+              <img
+                class="gift-image"
+                src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=700&q=80"
+                alt="Cozinha clara com utensílios domésticos"
+              />
+              <h3>Utensílios domésticos</h3>
+              <p>Para encher nossa rotina de cuidado, sabor e boas lembranças.</p>
+              <div class="gift-progress" aria-label="Progresso da meta">
+                <div class="gift-values">
+                  <span>Meta: <strong data-goal-label>R$ 0</strong></span>
+                  <span>Faltam: <strong data-remaining-label>R$ 0</strong></span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" data-progress-fill></span>
+                </div>
+              </div>
+              <div class="card-contribution">
+                <label>Quanto deseja contribuir?</label>
+                <div class="money-input">
+                  <span>R$</span>
+                  <input type="number" min="1" step="1" inputmode="numeric" placeholder="70" data-card-amount />
+                </div>
+              </div>
+              <button class="btn btn-card" type="button" data-open-modal>
+                Gerar Pix
+              </button>
+            </article>
+
+            <article
+              class="gift-card reveal"
+              data-gift="Ajuda para o novo lar"
+              data-goal="1500"
+              data-received="0"
+            >
+              <img
+                class="gift-image"
+                src="https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?auto=format&fit=crop&w=700&q=80"
+                alt="Ambiente de casa novo e iluminado"
+              />
+              <h3>Ajuda para o novo lar</h3>
+              <p>Uma contribuição para construirmos nosso começo com carinho.</p>
+              <div class="gift-progress" aria-label="Progresso da meta">
+                <div class="gift-values">
+                  <span>Meta: <strong data-goal-label>R$ 0</strong></span>
+                  <span>Faltam: <strong data-remaining-label>R$ 0</strong></span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" data-progress-fill></span>
+                </div>
+              </div>
+              <div class="card-contribution">
+                <label>Quanto deseja contribuir?</label>
+                <div class="money-input">
+                  <span>R$</span>
+                  <input type="number" min="1" step="1" inputmode="numeric" placeholder="150" data-card-amount />
+                </div>
+              </div>
+              <button class="btn btn-card" type="button" data-open-modal>
+                Gerar Pix
+              </button>
+            </article>
+
+            <article
+              class="gift-card reveal"
+              data-gift="Viagem especial"
+              data-goal="1000"
+              data-received="0"
+            >
+              <img
+                class="gift-image"
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80"
+                alt="Vista de viagem especial à beira-mar"
+              />
+              <h3>Viagem especial</h3>
+              <p>Para vivermos experiências lindas nesse novo capítulo.</p>
+              <div class="gift-progress" aria-label="Progresso da meta">
+                <div class="gift-values">
+                  <span>Meta: <strong data-goal-label>R$ 0</strong></span>
+                  <span>Faltam: <strong data-remaining-label>R$ 0</strong></span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" data-progress-fill></span>
+                </div>
+              </div>
+              <div class="card-contribution">
+                <label>Quanto deseja contribuir?</label>
+                <div class="money-input">
+                  <span>R$</span>
+                  <input type="number" min="1" step="1" inputmode="numeric" placeholder="100" data-card-amount />
+                </div>
+              </div>
+              <button class="btn btn-card" type="button" data-open-modal>
+                Gerar Pix
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section pix-section" id="pix">
+        <div class="container pix-layout reveal">
+          <div>
+            <p class="eyebrow">Pix dos noivos</p>
+            <h2>Presenteie de forma simples e segura</h2>
+            <p>
+              Escaneie o QR Code ou copie a chave Pix. Não existe valor mínimo:
+              o gesto é o que torna esse presente tão especial.
+            </p>
+            <div class="pix-box">
+              <span>Chave Pix</span>
+              <strong data-pix-key>11506612407</strong>
+            </div>
+            <button class="btn btn-primary" type="button" data-copy-pix>
+              Copiar chave Pix
+            </button>
+          </div>
+          <div class="qr-card" aria-label="QR Code do Pix">
+            <img
+              src="assets/qrcode-pix.png"
+              alt="QR Code Pix oficial da conta dos noivos"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section countdown-section">
+        <div class="container narrow reveal">
+          <p class="eyebrow">Contagem regressiva</p>
+          <h2>Falta pouco para o grande dia</h2>
+          <div class="countdown" data-countdown="2026-05-24T17:00:00-03:00">
+            <div>
+              <strong data-days>0</strong>
+              <span>Dias</span>
+            </div>
+            <div>
+              <strong data-hours>0</strong>
+              <span>Horas</span>
+            </div>
+            <div>
+              <strong data-minutes>0</strong>
+              <span>Minutos</span>
+            </div>
+            <div>
+              <strong data-seconds>0</strong>
+              <span>Segundos</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section gallery-section" id="galeria">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Nossa história</p>
+            <h2>Momentos que guardamos no coração</h2>
+          </div>
+          <div class="gallery-grid reveal">
+            <img
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80"
+              alt="Casal em cerimônia de casamento"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=900&q=80"
+              alt="Detalhe romântico de casamento"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=900&q=80"
+              alt="Casal sorrindo junto"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1509610973147-232dfea52a97?auto=format&fit=crop&w=900&q=80"
+              alt="Casal caminhando de mãos dadas"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80"
+              alt="Mesa elegante de casamento"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80"
+              alt="Decoração floral de casamento"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Obrigado por fazer parte da nossa história.</p>
+      <strong>Com amor, José & Maria</strong>
+    </footer>
+
+    <div class="modal" data-modal aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button class="modal-close" type="button" data-close-modal aria-label="Fechar">
+          ×
+        </button>
+        <p class="eyebrow">Presente via Pix</p>
+        <h2 id="modal-title">Presentear os noivos</h2>
+        <p data-selected-gift>
+          Obrigado por transformar esse momento em uma lembrança ainda mais linda.
+        </p>
+        <img
+          class="modal-qr"
+          src="assets/qrcode-pix.png"
+          alt="QR Code Pix oficial da conta dos noivos"
+        />
+        <div class="pix-details">
+          <span>Chave Pix</span>
+          <strong data-pix-key>11506612407</strong>
+          <span>Titular</span>
+          <strong>Conta dos noivos</strong>
+        </div>
+        <button class="btn btn-primary" type="button" data-copy-pix>
+          Copiar Pix copia e cola
+        </button>
+        <div class="pix-copy-box">
+          <span>Pix copia e cola</span>
+          <code data-pix-payload>Informe um valor no card para gerar o Pix.</code>
+        </div>
+        <div class="payment-confirmation">
+          <button class="btn btn-secondary" type="button" data-register-contribution>
+            Já fiz o Pix
+          </button>
+          <small>Use este botão apenas depois de concluir o pagamento.</small>
+        </div>
+        <p class="thanks">Receba nosso abraço e gratidão por tanto carinho.</p>
+      </div>
+    </div>
+
+    <div class="toast" data-toast>Chave Pix copiada!</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
