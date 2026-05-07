@@ -131,6 +131,15 @@ if (!sessionStorage.getItem("animationPlayed")) {
   
   // Marca que a animação foi reproduzida
   sessionStorage.setItem("animationPlayed", "true");
+} else {
+  // Se já rodou, carrega imediatamente sem a animação demorada
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("loaded", "no-animation");
+    });
+  } else {
+    document.body.classList.add("loaded", "no-animation");
+  }
 }
 
 function triggerEntryAnimation() {
@@ -298,6 +307,7 @@ function registerGiftContribution() {
       ? `Obrigado! Registramos ${formatCurrency(appliedContribution)} nesta meta. Agora faltam ${formatCurrency(remaining)}.`
       : "Obrigado! Essa meta foi completada por aqui com muito carinho.";
   showToast("Meta atualizada!");
+  particleBurst();
 }
 
 function getGiftRemaining(card) {
@@ -430,3 +440,91 @@ document.querySelectorAll(".reveal").forEach((element) => {
 renderGiftProgress();
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+// ============================================
+// Efeito da Navegação no Scroll & Timeline Progress
+// ============================================
+const nav = document.querySelector('.nav');
+const timelineSection = document.querySelector('.timeline-section');
+const timelineProgress = document.getElementById('timeline-progress');
+
+window.addEventListener('scroll', () => {
+  // Nav
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  
+  // Timeline Progress
+  if (timelineSection && timelineProgress) {
+    const rect = timelineSection.getBoundingClientRect();
+    const sectionTop = rect.top;
+    const sectionHeight = rect.height;
+    const windowHeight = window.innerHeight;
+    
+    if (sectionTop < windowHeight / 2) {
+      let progress = ((windowHeight / 2 - sectionTop) / sectionHeight) * 100;
+      progress = Math.max(0, Math.min(progress, 100));
+      timelineProgress.style.height = `${progress}%`;
+    } else {
+      timelineProgress.style.height = '0%';
+    }
+  }
+});
+
+// ============================================
+// Efeito de Partículas (Pó de Ouro)
+// ============================================
+function createParticle() {
+  const particle = document.createElement('div');
+  particle.classList.add('particle');
+  
+  const size = Math.random() * 8 + 4;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  particle.style.left = `${Math.random() * 100}vw`;
+  
+  const duration = Math.random() * 5 + 3;
+  particle.style.animationDuration = `${duration}s`;
+  
+  document.body.appendChild(particle);
+  
+  setTimeout(() => {
+    particle.remove();
+  }, duration * 1000);
+}
+
+// Geração contínua de partículas no topo da página
+setInterval(() => {
+  if (window.scrollY < window.innerHeight && Math.random() > 0.4) {
+    createParticle();
+  }
+}, 400);
+
+// Explosão de partículas
+function particleBurst() {
+  for (let i = 0; i < 40; i++) {
+    setTimeout(createParticle, i * 40);
+  }
+}
+
+// ============================================
+// RSVP via WhatsApp
+// ============================================
+const rsvpForm = document.getElementById('rsvp-form');
+if (rsvpForm) {
+  rsvpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('rsvp-name').value;
+    const count = document.getElementById('rsvp-count').value;
+    
+    // Substitua este número pelo número dos noivos com DDI e DDD (ex: 5511999999999)
+    const phoneNumber = "5511999999999"; 
+    
+    const message = `Olá José e Maria! Sou *${name}* e estou confirmando minha presença no casamento. Seremos *${count}* pessoa(s) no total!`;
+    const encodedMessage = encodeURIComponent(message);
+    
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+  });
+}
